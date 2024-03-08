@@ -1,58 +1,40 @@
 $def with(productos)
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <form class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-around pb-4" method="POST" action="">
-        <div class="relative">
-            <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-            </div>
-            <input type="text" id="nombre" name="nombre" class="t block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Busca un producto" required>
+<div class="container mt-5">
+    <form class="row g-3" method="POST" action="">
+        
+        <div class="col">
+            <a href="/insertar" class="btn btn-warning float-right">Insertar</a>
+          </div>
+        <div class="col-auto">
+            <label for="nombre" class="visually-hidden">Buscar producto</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Busca un producto" required>
         </div>
-        <button type="submit" class="justify-self-start bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buscar</button>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-info">Buscar</button>
+        </div>
     </form>
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+
+    <table class="table table-info table-hover mt-4">
+        <thead class="thead-light">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    Nombre
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Descripción
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Precio
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Existencias
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Opciones
-                </th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Existencias</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
             $for campo in productos:
-            <tr class="bg-white border-b hover:bg-gray-50">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    $campo['nombre']
-                </th>
-                <td class="px-6 py-4">
-                    $campo['descripción']
-                </td>
-                <td class="px-6 py-4">
-                    $campo['precio']
-                </td>
-                <td class="px-6 py-4">
-                    $campo['existencias']
-                </td>
-                <td class="px-6 py-4">
-                    <a href="/detalle/$campo['id_productos']" class="text-[#265301] outline-none no-underline pr-[1px] py-0.5 pb-0
-                    hover:border hover:bg-[#cdfeaa] visited:text-[#437a16] focus:border focus:bg-[#bae498]
-                    active:bg-[#265301] active:text-[#cdfeaa]">Detalles</a>
-                    <a href="/actualizar/$campo['id_productos']" class="text-[#265301] outline-none no-underline pr-[1px] py-0.5 pb-0
-                    hover:border hover:bg-[#cdfeaa] visited:text-[#437a16] focus:border focus:bg-[#bae498]
-                    active:bg-[#265301] active:text-[#cdfeaa]">Actualizar</a>
-                    <a href="/borrar/$campo['id_productos']" class="text-[#265301] outline-none no-underline pr-[1px] py-0.5 pb-0
-                    hover:border hover:bg-[#cdfeaa] visited:text-[#437a16] focus:border focus:bg-[#bae498]
-                    active:bg-[#265301] active:text-[#cdfeaa]">Borrar</a>
+            <tr>
+                <th scope="row">$campo['nombre']</th>
+                <td>$campo['descripción']</td>
+                <td>$campo['precio']</td>
+                <td>$campo['existencias']</td>
+                <td>
+                    <a href="/detalle/$campo['id_productos']" class="btn btn-primary">Detalles</a>
+                    <a href="/actualizar/$campo['id_productos']" class="btn btn-success">Actualizar</a>
+                    <a href="/borrar/$campo['id_productos']" class="btn btn-danger">Borrar</a>
                 </td>
             </tr>
         </tbody>
