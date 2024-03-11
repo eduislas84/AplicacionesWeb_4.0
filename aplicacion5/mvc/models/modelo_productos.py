@@ -52,7 +52,14 @@ class ModeloProductos:
         respuesta = False
         try:
             self.connect()
-            self.cursor.execute('INSERT INTO productos (nombre, descripcion, precio, existencias) VALUES (?, ?, ?, ?)', (producto["nombre"], producto["descripcion"], float(producto["precio"]), int(producto["existencia"])))
+            precio = float(producto["precio"])
+            existencias = int(producto["existencia"])
+            if precio < 0 or existencias < 0:
+                print("El precio y las existencias no pueden ser negativos.")
+                return respuesta
+
+            self.cursor.execute('INSERT INTO productos (nombre, descripcion, precio, existencias) VALUES (?, ?, ?, ?)',
+                                (producto["nombre"], producto["descripcion"], precio, existencias))
             result = self.cursor.rowcount
             if result:
                 respuesta = True
@@ -66,7 +73,14 @@ class ModeloProductos:
         response = False
         try:
             self.connect()
-            self.cursor.execute("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, existencias = ? WHERE id_productos = ?", (producto["nombre"], producto["descripcion"], producto["precio"], producto["existencia"], int(producto["producto"])))
+            precio = float(producto["precio"])
+            existencias = int(producto["existencia"])
+            if precio < 0 or existencias < 0:
+                print("El precio y las existencias no pueden ser negativos.")
+                return response
+
+            self.cursor.execute("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, existencias = ? WHERE id_productos = ?",
+                                (producto["nombre"], producto["descripcion"], precio, existencias, int(producto["producto"])))
             result = self.cursor.rowcount
             if result:
                 response = True
