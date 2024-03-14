@@ -1,32 +1,75 @@
 $def with (producto)
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title font-weight-bold">Detalles del producto</h5>
+<div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 ">
+    <div class="flex items-center justify-between mb-4">
+        <h5 class="text-xl font-bold leading-none text-gray-900">Detalles del producto</h5>
+   </div>
+   <div class="flow-root">
+    $for dato in producto:
+        <ul role="list" class="divide-y divide-gray-200">
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-gray-900 truncate">
+                            Nombre del producto:
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                        $dato['nombre']
+                    </div>
                 </div>
-                <div class="card-body">
-                    $for dato in producto:
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <strong>Nombre del producto:</strong> $dato['nombre']
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Descripción:</strong> $dato['descripción']
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Precio:</strong> $dato['precio'] MXN
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Existencias:</strong> $dato['existencias']
-                        </li>
-                    </ul>
+            </li>
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center ">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-gray-900 truncate">
+                            Descripción:
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                        $dato['descripción']
+                    </div>
                 </div>
-                <div class="card-footer text-right">
-                    <a href="/" class="btn btn-info">Regresar</a>
+            </li>
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-gray-900 truncate">
+                            Precio:
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                        $dato['precio'] MXN
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </li>
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center ">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-gray-900 truncate">
+                            Existencias
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                        $dato['existencias']
+                    </div>
+                </div>
+            </li>
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center ">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-gray-900 truncate">
+                            Imagen:
+                        </p>
+                    </div>
+                    <img src="data:image/$dato['extension'];base64, $dato['imagen']" alt="" width="45" height="45">
+                </div>
+            </li>
+            <li class="pt-3 pb-0 sm:pt-4">
+                <div class="md:col-span-5 text-right">
+                    <div class="inline-flex items-end">
+                      <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Regresar</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+   </div>
 </div>

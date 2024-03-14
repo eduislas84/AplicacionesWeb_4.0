@@ -1,36 +1,67 @@
 $def with(productos)
-<div class="container mt-5">
-    <form class="row g-3" method="POST" action="">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <form class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-around pb-4" method="POST" action="">
         
         <div class="col">
-            <a href="/insertar" class="btn btn-warning float-right">Insertar</a>
-          </div>
-        <div class="col-auto">
-            <label for="nombre" class="visually-hidden">Buscar producto</label>
-            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Busca un producto" required>
+            <a href="/insertar" class="btn btn-warning" float-right>Insertar</a>
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-info">Buscar</button>
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+            </div>
+            <input type="text" id="nombre" name="nombre" class="t block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Busca un producto" required>
         </div>
+        <button type="submit" class="btn btn-info">Buscar</button>
     </form>
-
-    <table class="table table-info table-hover mt-4">
-        <thead class="thead-light">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Existencias</th>
-                <th scope="col">Opciones</th>
+            <!--
+                <th scope="col" class="p-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                    </div>
+                </th>
+            -->
+                <th scope="col" class="px-6 py-3">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Descripción
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Precio
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Existencias
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Imagen
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Opciones
+                </th>
             </tr>
         </thead>
         <tbody>
             $for campo in productos:
-            <tr>
-                <th scope="row">$campo['nombre']</th>
-                <td>$campo['descripción']</td>
-                <td>$campo['precio']</td>
-                <td>$campo['existencias']</td>
+            <tr class="bg-white border-b hover:bg-gray-50">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    $campo['nombre']
+                </th>
+                <td class="px-6 py-4">
+                    $campo['descripción']
+                </td>
+                <td class="px-6 py-4">
+                    $campo['precio']
+                </td>
+                <td class="px-6 py-4">
+                    $campo['existencias']
+                </td>
+                <td class="px-6 py-4">
+                    <img src="data:image/$campo['extension'];base64, $campo['imagen']" alt="" width="45" height="45">
+                </td>
                 <td>
                     <a href="/detalle/$campo['id_productos']" class="btn btn-primary">Detalles</a>
                     <a href="/actualizar/$campo['id_productos']" class="btn btn-success">Actualizar</a>

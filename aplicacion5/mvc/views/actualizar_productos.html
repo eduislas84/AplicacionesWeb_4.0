@@ -1,19 +1,13 @@
 $def with (producto)
-<form class="p-6  flex items-center justify-center" method="POST" action="">
+<!-- min-h-screen  -->
+<form class="p-6  flex items-center justify-center" method="POST" action="" enctype="multipart/form-data">
   <div class="container max-w-screen-lg mx-auto">
     <div>
       <h2 class="font-semibold text-xl text-gray-600">Actualizar Producto</h2>
-      <p class="text-gray-500 mb-6">Modifica los datos de producto</p>
       
-      <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-          <div class="text-gray-600">
-            <p class="font-medium text-lg">Detalles del producto</p>
-            <p>Por favor llena todos los campos</p>
-          </div>
           $for dato in producto:
           <div class="lg:col-span-2">
-            <input value="$dato['id_producto']" type="hidden" id="producto" name="producto"></input>
+            <input value="$dato['id_productos']" type="hidden" id="producto" name="producto"></input>
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
               <div class="md:col-span-5">
                   <label for="nombre_producto">Producto</label>
@@ -37,10 +31,25 @@ $def with (producto)
                   <label for="existencia">Existencia</label>
                   <input type="number" name="existencia" id="existencia" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="$dato['existencias']" placeholder="Existencias del producto" required/>
                 </div>
+                <div class="flex flex-col w-full md:col-span-5 py-3">
+                  <label for="imagen" class="py-1">Imagen</label>
+  
+                  <label for="imagen" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100">
+                      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                          <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                          </svg>
+                          <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Presiona para subir</span> o arrastra y suelta</p>
+                          <p class="text-xs text-gray-500">SVG, PNG, JPG</p>
+                      </div>
+                      <input id="imagen" name="imagen" type="file" class="hidden" accept="image/*"/>
+                  </label>
+                  
+              </div> 
                 <div class="md:col-span-5 text-right">
                   <div class="md:col-span-5 text-right flex flex-row justify-around items-center">
-                    <button type="submit" class="btn btn-success">Actualizar</button>
-                    <a href="/" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Actualizar</button>
+                    <a href="/" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancelar</a>
 
                   </div>
                 </div>
