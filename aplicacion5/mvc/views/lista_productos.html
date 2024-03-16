@@ -3,7 +3,7 @@ $def with(productos)
     <form class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-around pb-4" method="POST" action="">
         
         <div class="col">
-            <a href="/insertar" class="btn btn-warning" float-right>Insertar</a>
+            <a href="/insertar" class="btn btn-warning" float-right style="color: rgb(4, 169, 6);">Insertar</a>
         </div>
         <div class="relative">
             <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
@@ -16,14 +16,6 @@ $def with(productos)
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-            <!--
-                <th scope="col" class="p-4">
-                    <div class="flex items-center">
-                        <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                        <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                    </div>
-                </th>
-            -->
                 <th scope="col" class="px-6 py-3">
                     Nombre
                 </th>
@@ -63,9 +55,9 @@ $def with(productos)
                     <img src="data:image/$campo['extension'];base64, $campo['imagen']" alt="" width="45" height="45">
                 </td>
                 <td>
-                    <a href="/detalle/$campo['id_productos']" class="btn btn-primary">Detalles</a>
-                    <a href="/actualizar/$campo['id_productos']" class="btn btn-success">Actualizar</a>
-                    <a href="/borrar/$campo['id_productos']" class="btn btn-danger">Borrar</a>
+                    <a href="/detalle/$campo['id_productos']" class="btn btn-primary" style="color: rgba(255, 234, 0, 0.868);">Detalles</a>
+                    <a href="/actualizar/$campo['id_productos']" class="btn btn-success" style="color: rgb(0, 195, 255);">Actualizar</a>
+                    <a href="/borrar/$campo['id_productos']" class="btn btn-danger" style="color: rgb(255, 0, 0);">Borrar</a>
                 </td>
             </tr>
         </tbody>
